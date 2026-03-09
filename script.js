@@ -196,7 +196,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 // Gemini AI API integration
-const GEMINI_API_KEY = 'AIzaSyAlc5XegXplo9wCipdvwk_M40Y4vN1TwFI';
+const GEMINI_API_KEY = 'AIzaSyBZLZWwe83GKzIvwo9OgoaWuTCDx_6BtbA';
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta2/models/gemini-pro:generateContent?key=' + GEMINI_API_KEY;
 
 async function enhanceWithGeminiAI(text, mode = 'bullets') {
