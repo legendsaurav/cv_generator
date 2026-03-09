@@ -19,7 +19,7 @@
                     <div>
                         <input type="text" id="name" name="name" placeholder="Your Name" required style="font-size:28px; font-weight:bold; width:100%;" />
                         <input type="text" id="degree" name="degree" placeholder="Degree (e.g. in Engineering Physics)" style="width:100%;" />
-                        <input type="text" id="institute" name="institute" placeholder="Institute Name" style="width:100%;" />
+                        <input type="text" id="institute" name="institute" value="Indian Institute of Technology, Ropar" style="width:100%;" readonly />
                     </div>
                 </div>
                 <div class="contact">
@@ -34,32 +34,10 @@
             <div class="section__header">
                 <h2>Education</h2>
             </div>
-            <div class="table">
-                <div class="table__row table__row--head">
-                    <span>Degree</span>
-                    <span>Institute/Board</span>
-                    <span>CGPA/Percentage</span>
-                    <span>Year</span>
-                </div>
-                <div class="table__row">
-                    <span>Bachelor of Technology</span>
-                    <span>Indian Institute of Technology, Ropar</span>
-                    <span>6.8 (Till 2nd Sem)</span>
-                    <span>2025-2024</span>
-                </div>
-                <div class="table__row">
-                    <span>Senior Secondary</span>
-                    <span>Central Board of Secondary Education</span>
-                    <span>80%</span>
-                    <span>2023-24</span>
-                </div>
-                <div class="table__row">
-                    <span>Secondary</span>
-                    <span>Central Board of Secondary Education</span>
-                    <span>90%</span>
-                    <span>2021-20</span>
-                </div>
+            <div id="education-section">
+                <!-- User will add education dynamically -->
             </div>
+            <button type="button" onclick="addEducation()">Add Education</button>
         </section>
 
         <section class="section">

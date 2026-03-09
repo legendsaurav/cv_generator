@@ -1,3 +1,18 @@
+function addEducation() {
+    const section = document.getElementById('education-section');
+    const idx = section.children.length;
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.innerHTML = `
+        <input type="text" name="edu_degree_${idx}" placeholder="Degree (e.g. B.Tech)" required />
+        <input type="text" name="edu_institute_${idx}" placeholder="Institute/Board" required />
+        <input type="text" name="edu_score_${idx}" placeholder="CGPA/Percentage" />
+        <input type="text" name="edu_year_${idx}" placeholder="Year" />
+        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+        <hr />
+    `;
+    section.appendChild(div);
+}
 // JavaScript for dynamic form sections and preview
 function addExperience() {
     const section = document.getElementById('experience-section');
@@ -80,8 +95,17 @@ document.getElementById('userForm').onsubmit = function(e) {
     let html = `<div class='resume'>`;
     // Header
     html += `<header class='resume__header'><div class='brand'><img src='Screenshot 2025-12-19 103837.png' class='brand__logo' /><div><h1>${data.get('name')||''}</h1><p>${data.get('degree')||''}</p><p>${data.get('institute')||''}</p></div></div><div class='contact'><p>${data.get('phone')||''}</p><p>${data.get('email')||''}</p><p>${data.get('github')||''}</p><p>${data.get('linkedin')||''}</p></div></header>`;
-    // Education (static)
-    html += document.querySelector('.section .table').outerHTML;
+    // Education (dynamic)
+    html += `<section class='section'><div class='section__header'><h2>Education</h2></div>`;
+    let hasEdu = false;
+    for(let i=0; data.get(`edu_degree_${i}`); i++) {
+        hasEdu = true;
+        html += `<article class='item'><div class='item__row'><div><h3>${data.get(`edu_degree_${i}`)}</h3></div><div class='item__meta'><p>${data.get(`edu_institute_${i}`)||''}</p><p>${data.get(`edu_score_${i}`)||''}</p><p>${data.get(`edu_year_${i}`)||''}</p></div></div></article>`;
+    }
+    if (!hasEdu) {
+        html += `<p>No education data provided.</p>`;
+    }
+    html += `</section>`;
     // Experience
     html += `<section class='section'><div class='section__header'><h2>Experience</h2></div>`;
     for(let i=0; data.get(`exp_title_${i}`); i++) {
