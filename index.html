@@ -8,25 +8,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
 </head>
 <body>
     <main class="resume">
-        <header class="resume__header">
-            <div class="brand">
-                <img src="Screenshot 2025-12-19 103837.png" alt="Institute Emblem" class="brand__logo" />
-                <div>
-                    <h1>Saurav Saha</h1>
-                    <p>Bachelor of Technology<br />in Engineering Physics</p>
-                    <p>Indian Institute Of Technology, Ropar</p>
+        <form id="userForm">
+            <header class="resume__header">
+                <div class="brand">
+                    <img src="Screenshot 2025-12-19 103837.png" alt="Institute Emblem" class="brand__logo" />
+                    <div>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required style="font-size:28px; font-weight:bold; width:100%;" />
+                        <input type="text" id="degree" name="degree" placeholder="Degree (e.g. in Engineering Physics)" style="width:100%;" />
+                        <input type="text" id="institute" name="institute" placeholder="Institute Name" style="width:100%;" />
+                    </div>
                 </div>
-            </div>
-            <div class="contact">
-                <p>+91 9907045311</p>
-                <p>saurav.saha1984@gmail.com</p>
-                <p><a href="https://github.com/legendsaurav" target="_blank" rel="noreferrer">github.com/legendsaurav</a></p>
-                <p><a href="https://in.linkedin.com/in/saurav-saha-b3198b324" target="_blank" rel="noreferrer">in.linkedin.com/in/saurav-saha-b3198b324</a></p>
-            </div>
-        </header>
+                <div class="contact">
+                    <input type="text" id="phone" name="phone" placeholder="Phone Number" />
+                    <input type="email" id="email" name="email" placeholder="Email" />
+                    <input type="url" id="github" name="github" placeholder="GitHub URL" />
+                    <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL" />
+                </div>
+            </header>
 
         <section class="section">
             <div class="section__header">
@@ -64,262 +66,56 @@
             <div class="section__header">
                 <h2>Experience</h2>
             </div>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>Perplexity &mdash; Campus Partner</h3>
-                    </div>
-                    <div class="item__meta">
-                        <p>Sept 2025 - Present</p>
-                        <p>IIT Ropar</p>
-                    </div>
-                </div>
-                <ul>
-                    <li>Build communities of AI researchers on campus and promote awareness about Perplexity AI research initiatives.</li>
-                    <li>Organize and execute workshops, seminars, and networking events to foster collaboration among students.</li>
-                </ul>
-            </article>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>AARAM Club (Physics Club) &mdash; General Body</h3>
-                    </div>
-                    <div class="item__meta">
-                        <p>Aug 2025 - Present</p>
-                        <p>IIT Ropar</p>
-                    </div>
-                </div>
-                <ul>
-                    <li>Participate in strategic decisions and club governance to shape the club's direction and initiatives.</li>
-                    <li>Actively contribute to organizing and executing physics-related events and mentorship programs.</li>
-                </ul>
-            </article>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>Information Processing Laboratory, IIT Kharagpur &mdash; Research &amp; Project Summer Intern</h3>
-                    </div>
-                    <div class="item__meta">
-                        <p>May 2025 - July 2025</p>
-                        <p>Kharagpur, India</p>
-                    </div>
-                </div>
-                <ul>
-                    <li>Developed a simultaneous temperature and light-controlled neural activity modulating system in Drosophila.</li>
-                    <li>Worked on a large-scale LIF neural network model of the whole connectome-based Drosophila neural circuit.</li>
-                </ul>
-            </article>
+            <div id="experience-section">
+                <!-- User will add experience dynamically -->
+            </div>
+            <button type="button" onclick="addExperience()">Add Experience</button>
         </section>
 
         <section class="section">
             <div class="section__header">
                 <h2>Projects</h2>
             </div>
-            <h3 class="projects__subhead">Personal</h3>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>Career Booster</h3>
-                           <p class="item__sub">Product Lead</p>
-                    </div>
-                       <div class="item__meta">
-                           <p>2025</p>
-                           <p><a href="https://careerbooster-sigma.vercel.app/?v=home" target="_blank" rel="noreferrer">Website</a></p>
-                       </div>
-                </div>
-                <ul>
-                    <li>Showcases authentic faculty profiles highlighting research interests, signature projects, and industry collaborations.</li>
-                    <li>Self-development dashboard blends coding progress tracking with curated expert inspiration.</li>
-                    <li>Curated library surfaces elite AI, engineering, and biomedical signal processing courses and resources.</li>
-                    <li>Bridges academia-industry gaps through real-world applications, startup exposure, and emerging technologies.</li>
-                </ul>
-            </article>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>Smart Exam AI</h3>
-                           <p class="item__sub">Full Stack Developer</p>
-                    </div>
-                       <div class="item__meta">
-                           <p>2025</p>
-                           <p><a href="https://examiner-gilt.vercel.app" target="_blank" rel="noreferrer">Website</a></p>
-                       </div>
-                </div>
-                <ul>
-                    <li>Nested schema structure treats exams as curated collections of questions with precise options.</li>
-                    <li>Modular, scalable architecture orchestrates complex exams without friction.</li>
-                    <li>Mongoose schemas guard data integrity while enabling flexible extensions.</li>
-                    <li>Future-ready platform that layers intelligence onto exam management workflows.</li>
-                </ul>
-            </article>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>Schmer</h3>
-                           <p class="item__sub">Product Design</p>
-                    </div>
-                       <div class="item__meta">
-                           <p>2025</p>
-                           <p><a href="https://scramer-blab.vercel.app" target="_blank" rel="noreferrer">Website</a></p>
-                       </div>
-                </div>
-                <ul>
-                    <li>Supabase login funnels members into a clean dashboard of cross-functional projects.</li>
-                    <li>Project view merges meetings, announcements, chat, and recorded session libraries in one pane.</li>
-                    <li>Browser extension hook automates session capture for tools like SolidWorks and MATLAB.</li>
-                    <li>Seamless session library keeps multidisciplinary projects discoverable and organized.</li>
-                </ul>
-            </article>
-
-            <h3 class="projects__subhead">Team</h3>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>Air Quality Visualizer and Forecast</h3>
-                        <p class="item__sub">Environmental Intelligence Initiative</p>
-                    </div>
-                    <div class="item__meta">
-                        <p>2024 - 2025</p>
-                    </div>
-                </div>
-                <ul>
-                    <li>AI-driven platform delivering granular, real-time, and predictive AQI insights for small cities and rural corridors.</li>
-                    <li>Personalized health guidance coupled with pollution source mapping to highlight urgent intervention zones.</li>
-                    <li>Forecasting engine analyzes past trends to surface future risks and measure mitigation impact.</li>
-                    <li>Water-resource conservation workflows leverage blockchain-secured satellite data to protect critical supplies.</li>
-                    <li>Unified dashboard helps communities coordinate proactive environmental action for healthier living.</li>
-                </ul>
-            </article>
-            <article class="item">
-                <div class="item__row">
-                    <div>
-                        <h3>Road Hazard Detection &amp; Real-Time Alerts (SMART SAMADHAN)</h3>
-                        <p class="item__sub">Civic Tech Initiative</p>
-                    </div>
-                    <div class="item__meta">
-                        <p>2024 - 2025</p>
-                    </div>
-                </div>
-                <ul>
-                    <li>Citizen-first mobile/web channel for reporting potholes, litter, streetlight faults, and other civic issues.</li>
-                    <li>One-tap submissions capture photos, geotags, and sync offline reports once connectivity returns.</li>
-                    <li>AI-driven triage deduplicates and prioritizes tickets so authorities address critical hazards faster.</li>
-                    <li>Transparent public dashboards surface live status updates, boosting accountability and trust.</li>
-                    <li>Gamified engagement plus analytics-rich admin tools motivate participation and streamline responses.</li>
-                </ul>
-            </article>
+            <div id="projects-section">
+                <!-- User will add projects dynamically -->
+            </div>
+            <button type="button" onclick="addProject()">Add Project</button>
         </section>
         
         <section class="section">
             <div class="section__header">
                 <h2>Technical Skills</h2>
             </div>
-            <div class="skills-group">
-                <p><strong>Programming Languages</strong></p>
-                <ul>
-                    <li>C/C++ &mdash; Intermediate (Arduino/embedded systems, neural network models)</li>
-                    <li>Python &mdash; Advanced (data processing, analysis)</li>
-                    <li>JavaScript/TypeScript &mdash; Advanced (full-stack web development)</li>
-                    <li>SQL &mdash; Intermediate (database management)</li>
-                </ul>
+            <div id="skills-section">
+                <!-- User will add skills dynamically -->
             </div>
-
-            <div class="skills-group">
-                <p><strong>Full-Stack Web Development</strong></p>
-                <ul>
-                    <li>Frontend: React.js, HTML/CSS, TypeScript</li>
-                    <li>Backend: Node.js, Express.js</li>
-                    <li>Databases: MongoDB, Supabase (PostgreSQL)</li>
-                    <li>APIs: RESTful design, integration &amp; testing, Gemini/Perplexity API</li>
-                    <li>Desktop: Electron (C++ notebook application)</li>
-                </ul>
-            </div>
-
-            <div class="skills-group">
-                <p><strong>Embedded Systems &amp; IoT</strong></p>
-                <ul>
-                    <li>Microcontrollers: Arduino, STM32</li>
-                    <li>Hardware Modules: XH-W1209 temperature controller</li>
-                    <li>Hardware Components: MOSFET &amp; relay circuit design</li>
-                    <li>Temperature Control Systems: Peltier module control &amp; thermal systems</li>
-                    <li>Real-time Signal Processing: Data acquisition &amp; processing</li>
-                </ul>
-            </div>
-
-            <div class="skills-group">
-                <p><strong>AI/ML &amp; Data Science</strong></p>
-                <ul>
-                    <li>Neural Networks: LIF (Leaky Integrate-and-Fire) modeling</li>
-                    <li>Machine Learning: AI-driven systems, duplicate detection algorithms</li>
-                    <li>Signal Processing: Digital signal theory, time-series analysis</li>
-                    <li>Data Analysis: Large-scale connectome-based circuit analysis</li>
-                </ul>
-            </div>
-
-            <div class="skills-group">
-                <p><strong>Research &amp; Scientific Computing</strong></p>
-                <ul>
-                    <li>Neuroscience Applications: Drosophila neural systems, connectome analysis</li>
-                    <li>Environmental Analysis: Air quality prediction &amp; forecasting</li>
-                    <li>Scientific Modeling: Complex system simulation</li>
-                    <li>Platforms: Google Colab, Jupyter Notebooks, Proteus Simulation</li>
-                </ul>
-            </div>
-
-            <div class="skills-group">
-                <p><strong>Tools &amp; Platforms</strong></p>
-                <ul>
-                    <li>Development: VS Code, Arduino IDE, GitHub</li>
-                    <li>Version Control: Git/GitHub repository management</li>
-                    <li>Browser Extensions: Development &amp; testing</li>
-                    <li>Simulation: Proteus for circuit design</li>
-                    <li>Authentication: Supabase login systems</li>
-                </ul>
-            </div>
-
-            <div class="skills-group">
-                <p><strong>Domain Expertise</strong></p>
-                <ul>
-                    <li>Temperature &amp; Thermal Control: Precise PID-based systems</li>
-                    <li>Hardware-Software Integration: Seamless IoT orchestration</li>
-                    <li>Full-Stack Deployment: End-to-end application delivery</li>
-                    <li>API Integration: Third-party service integration</li>
-                    <li>Data Management: Large-scale data handling &amp; optimization</li>
-                </ul>
-            </div>
+            <button type="button" onclick="addSkillGroup()">Add Skill Group</button>
         </section>
 
         <section class="section">
             <div class="section__header">
                 <h2>Key Courses Taken</h2>
             </div>
-            <div class="skills-group">
-                <p><strong>Core Physics Courses</strong></p>
-                <ul>
-                    <li>Classical Mechanics, Quantum Mechanics, Electromagnetism, Thermodynamics &amp; Statistical Physics</li>
-                    <li>Optics and Photonics, Solid State &amp; Semiconductor Physics, Atomic &amp; Nuclear Physics</li>
-                    <li>Hands-on rigor via Physics Lab and Engineering Physics Lab</li>
-                </ul>
+            <div id="courses-section">
+                <!-- User will add courses dynamically -->
             </div>
-            <div class="skills-group">
-                <p><strong>Electrical Engineering Courses</strong></p>
-                <ul>
-                    <li>Analog &amp; Digital Electronics, Signals &amp; Systems, Microprocessor Architecture</li>
-                    <li>Electrical Sciences/Basic Electrical Engineering, Semiconductor Device Physics</li>
-                    <li>Focus on practical circuitry, devices, and high-tech industry readiness</li>
-                </ul>
-            </div>
+            <button type="button" onclick="addCourseGroup()">Add Course Group</button>
         </section>
 
         <section class="section">
             <div class="section__header">
                 <h2>Positions of Responsibility</h2>
             </div>
-            <ul>
-                <li>Aayam &mdash; General Body &middot; Aug 2025 - Present</li>
+            <ul id="positions-section">
+                <!-- User will add positions dynamically -->
             </ul>
+            <button type="button" onclick="addPosition()">Add Position</button>
         </section>
 
+            <br />
+            <button type="submit">Save/Preview Resume</button>
+        </form>
+        <section id="preview" style="margin-top:40px;"></section>
     </main>
 </body>
 </html>
