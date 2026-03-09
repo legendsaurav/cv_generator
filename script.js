@@ -95,17 +95,34 @@ document.getElementById('userForm').onsubmit = function(e) {
     let html = `<div class='resume'>`;
     // Header
     html += `<header class='resume__header'><div class='brand'><img src='Screenshot 2025-12-19 103837.png' class='brand__logo' /><div><h1>${data.get('name')||''}</h1><p>${data.get('degree')||''}</p><p>${data.get('institute')||''}</p></div></div><div class='contact'><p>${data.get('phone')||''}</p><p>${data.get('email')||''}</p><p>${data.get('github')||''}</p><p>${data.get('linkedin')||''}</p></div></header>`;
-    // Education (dynamic)
+    // Education (static table with user input)
     html += `<section class='section'><div class='section__header'><h2>Education</h2></div>`;
-    let hasEdu = false;
-    for(let i=0; data.get(`edu_degree_${i}`); i++) {
-        hasEdu = true;
-        html += `<article class='item'><div class='item__row'><div><h3>${data.get(`edu_degree_${i}`)}</h3></div><div class='item__meta'><p>${data.get(`edu_institute_${i}`)||''}</p><p>${data.get(`edu_score_${i}`)||''}</p><p>${data.get(`edu_year_${i}`)||''}</p></div></div></article>`;
-    }
-    if (!hasEdu) {
-        html += `<p>No education data provided.</p>`;
-    }
-    html += `</section>`;
+    html += `<div class='table'>
+        <div class='table__row table__row--head'>
+            <span>DEGREE</span>
+            <span>INSTITUTE/BOARD</span>
+            <span>CGPA/PERCENTAGE</span>
+            <span>YEAR</span>
+        </div>
+        <div class='table__row'>
+            <span>Bachelor of Technology</span>
+            <span>Indian Institute of Technology, Ropar</span>
+            <span>${data.get('btech_cgpa')||''}</span>
+            <span>${data.get('btech_year')||''}</span>
+        </div>
+        <div class='table__row'>
+            <span>Senior Secondary</span>
+            <span>Central Board of Secondary Education</span>
+            <span>${data.get('senior_cgpa')||''}</span>
+            <span>${data.get('senior_year')||''}</span>
+        </div>
+        <div class='table__row'>
+            <span>Secondary</span>
+            <span>Central Board of Secondary Education</span>
+            <span>${data.get('secondary_cgpa')||''}</span>
+            <span>${data.get('secondary_year')||''}</span>
+        </div>
+    </div>`;
     // Experience
     html += `<section class='section'><div class='section__header'><h2>Experience</h2></div>`;
     for(let i=0; data.get(`exp_title_${i}`); i++) {
