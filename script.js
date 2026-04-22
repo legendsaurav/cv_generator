@@ -123,19 +123,19 @@ document.getElementById('userForm').onsubmit = function(e) {
         </div>
         <div class='table__row'>
             <span>Bachelor of Technology</span>
-            <span>Indian Institute of Technology, Ropar</span>
+            <span>${data.get('btech_institute')||''}</span>
             <span>${data.get('btech_cgpa')||''}</span>
             <span>${data.get('btech_year')||''}</span>
         </div>
         <div class='table__row'>
             <span>Senior Secondary</span>
-            <span>Central Board of Secondary Education</span>
+            <span>${data.get('senior_board')||''}</span>
             <span>${data.get('senior_cgpa')||''}</span>
             <span>${data.get('senior_year')||''}</span>
         </div>
         <div class='table__row'>
             <span>Secondary</span>
-            <span>Central Board of Secondary Education</span>
+            <span>${data.get('secondary_board')||''}</span>
             <span>${data.get('secondary_cgpa')||''}</span>
             <span>${data.get('secondary_year')||''}</span>
         </div>
