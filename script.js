@@ -272,5 +272,12 @@ function addGeminiButtons() {
 });
 
 window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.addEventListener('mousedown', (e) => {
+            if (e.button === 2) e.preventDefault();
+        });
+    });
     addGeminiButtons();
 });

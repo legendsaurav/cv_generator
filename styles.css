@@ -56,6 +56,16 @@ a:visited {
     width: 105px;
     height: 105px;
     object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
 }
 
 .brand h1 {
