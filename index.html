@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="contact">
-                    <input type="text" id="phone" name="phone" placeholder="Phone Number" />
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" inputmode="tel" />
                     <input type="email" id="email" name="email" placeholder="Email" />
                     <input type="url" id="github" name="github" placeholder="GitHub URL" />
                     <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL" />
@@ -43,21 +43,21 @@
                 </div>
                 <div class="table__row">
                     <span>Bachelor of Technology</span>
-                    <span>Indian Institute of Technology, Ropar</span>
-                    <span><input type="text" name="btech_cgpa" placeholder="" style="width:90%;" /></span>
-                    <span><input type="text" name="btech_year" placeholder="" style="width:90%;" /></span>
+                    <span><input type="text" name="btech_institute" placeholder="" style="width:90%;" /></span>
+                    <span><input type="number" name="btech_cgpa" placeholder="" style="width:90%;" min="0" max="100" step="0.01" inputmode="decimal" /></span>
+                    <span><input type="number" name="btech_year" placeholder="" style="width:90%;" min="1900" max="2100" step="1" inputmode="numeric" /></span>
                 </div>
                 <div class="table__row">
                     <span>Senior Secondary</span>
-                    <span>Central Board of Secondary Education</span>
-                    <span><input type="text" name="senior_cgpa" placeholder="" style="width:90%;" /></span>
-                    <span><input type="text" name="senior_year" placeholder="" style="width:90%;" /></span>
+                    <span><input type="text" name="senior_board" placeholder="" style="width:90%;" /></span>
+                    <span><input type="number" name="senior_cgpa" placeholder="" style="width:90%;" min="0" max="100" step="0.01" inputmode="decimal" /></span>
+                    <span><input type="number" name="senior_year" placeholder="" style="width:90%;" min="1900" max="2100" step="1" inputmode="numeric" /></span>
                 </div>
                 <div class="table__row">
                     <span>Secondary</span>
-                    <span>Central Board of Secondary Education</span>
-                    <span><input type="text" name="secondary_cgpa" placeholder="" style="width:90%;" /></span>
-                    <span><input type="text" name="secondary_year" placeholder="" style="width:90%;" /></span>
+                    <span><input type="text" name="secondary_board" placeholder="" style="width:90%;" /></span>
+                    <span><input type="number" name="secondary_cgpa" placeholder="" style="width:90%;" min="0" max="100" step="0.01" inputmode="decimal" /></span>
+                    <span><input type="number" name="secondary_year" placeholder="" style="width:90%;" min="1900" max="2100" step="1" inputmode="numeric" /></span>
                 </div>
             </div>
         </section>
@@ -115,7 +115,7 @@
             <br />
             <button type="submit">Save/Preview Resume</button>
         </form>
-        <section id="preview" style="margin-top:40px;"></section>
+        <section id="preview" style="margin-top:40px; display:none;"></section>
     </main>
 </body>
 </html>

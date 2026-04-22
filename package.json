@@ -1,0 +1,9 @@
+{
+  "name": "cv_generator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

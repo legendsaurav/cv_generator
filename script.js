@@ -6,8 +6,8 @@ function addEducation() {
     div.innerHTML = `
         <input type="text" name="edu_degree_${idx}" placeholder="Degree (e.g. B.Tech)" required />
         <input type="text" name="edu_institute_${idx}" placeholder="Institute/Board" required />
-        <input type="text" name="edu_score_${idx}" placeholder="CGPA/Percentage" />
-        <input type="text" name="edu_year_${idx}" placeholder="Year" />
+        <input type="number" name="edu_score_${idx}" placeholder="CGPA/Percentage" min="0" max="100" step="0.01" inputmode="decimal" />
+        <input type="number" name="edu_year_${idx}" placeholder="Year" min="1900" max="2100" step="1" inputmode="numeric" />
         <button type="button" onclick="this.parentElement.remove()">Remove</button>
         <hr />
     `;
@@ -39,8 +39,8 @@ function addProject() {
     div.innerHTML = `
         <input type="text" name="proj_name_${idx}" placeholder="Project Name" required />
         <input type="text" name="proj_role_${idx}" placeholder="Role" />
-        <input type="text" name="proj_year_${idx}" placeholder="Year" />
-        <input type="url" name="proj_link_${idx}" placeholder="Website Link" />
+        <input type="number" name="proj_year_${idx}" placeholder="Year" min="1900" max="2100" step="1" inputmode="numeric" />
+        <input type="url" name="proj_link_${idx}" placeholder="Website Link (optional)" />
         <textarea name="proj_desc_${idx}" placeholder="Description (bullets, comma separated)" rows="2"></textarea>
         <button type="button" onclick="this.parentElement.remove()">Remove</button>
         <hr />
@@ -89,9 +89,26 @@ function addPosition() {
     section.appendChild(li);
 }
 
+function validateNumericFields(form) {
+    const numericFields = form.querySelectorAll('input[type="number"]');
+    for (const field of numericFields) {
+        if (field.value.trim() === '') continue;
+        if (!field.checkValidity()) {
+            field.reportValidity();
+            field.focus();
+            return false;
+        }
+    }
+    return true;
+}
+
 document.getElementById('userForm').onsubmit = function(e) {
     e.preventDefault();
+    if (!validateNumericFields(this)) {
+        return;
+    }
     const data = new FormData(this);
+    const preview = document.getElementById('preview');
     let html = `<div class='resume'>`;
     // Header
     html += `<header class='resume__header'><div class='brand'><img src='Screenshot 2025-12-19 103837.png' class='brand__logo' /><div><h1>${data.get('name')||''}</h1><p>${data.get('degree')||''}</p><p>${data.get('institute')||''}</p></div></div><div class='contact'><p>${data.get('phone')||''}</p><p>${data.get('email')||''}</p><p>${data.get('github')||''}</p><p>${data.get('linkedin')||''}</p></div></header>`;
@@ -162,7 +179,19 @@ document.getElementById('userForm').onsubmit = function(e) {
     }
     html += `</ul></section>`;
     html += `</div>`;
-    document.getElementById('preview').innerHTML = html;
+    preview.innerHTML = html;
+    preview.style.display = 'block';
+
+    let printButton = document.getElementById('printResumeBtn');
+    if (!printButton) {
+        printButton = document.createElement('button');
+        printButton.type = 'button';
+        printButton.id = 'printResumeBtn';
+        printButton.textContent = 'Print Resume';
+        printButton.style = 'margin: 18px 0 0 0; background: #0f0f0f; color: #fff; border: none; border-radius: 3px; padding: 8px 18px; font-size: 15px; cursor: pointer;';
+        printButton.onclick = printResume;
+        preview.insertAdjacentElement('afterend', printButton);
+    }
 };
 
 // Add print functionality
@@ -185,37 +214,17 @@ function printResume() {
     setTimeout(() => printWindow.print(), 300);
 }
 
-// Add print button after preview
-window.addEventListener('DOMContentLoaded', function() {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = 'Print Resume';
-    btn.style = 'margin: 18px 0 0 0; background: #0f0f0f; color: #fff; border: none; border-radius: 3px; padding: 8px 18px; font-size: 15px; cursor: pointer;';
-    btn.onclick = printResume;
-    document.getElementById('preview').parentNode.insertBefore(btn, document.getElementById('preview').nextSibling);
-});
-
-// Gemini AI API integration
-const GEMINI_API_KEY = 'AIzaSyBZLZWwe83GKzIvwo9OgoaWuTCDx_6BtbA';
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta2/models/gemini-pro:generateContent?key=' + GEMINI_API_KEY;
-
 async function enhanceWithGeminiAI(text, mode = 'bullets') {
     if (!text.trim()) return '';
-    // Use Gemini API for enhancement
-    const prompt = mode === 'bullets'
-        ? `Convert the following paragraph into concise bullet points:\n${text}`
-        : text;
     try {
-        const response = await fetch(GEMINI_API_URL, {
+        const response = await fetch('/api/enhance', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
-            })
+            body: JSON.stringify({ text, mode })
         });
         const data = await response.json();
-        if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
-            return data.candidates[0].content.parts[0].text;
+        if (response.ok && data && typeof data.text === 'string' && data.text.trim()) {
+            return data.text.trim();
         }
         return text;
     } catch (err) {
@@ -236,7 +245,7 @@ function addGeminiButtons() {
         btn.onclick = async function() {
             btn.disabled = true;
             btn.textContent = 'Enhancing...';
-            const enhanced = await enhanceWithGeminiAI(textarea.value, 'bullets');
+            const enhanced = await enhanceWithGeminiAI(textarea.value, 'auto');
             textarea.value = enhanced;
             btn.disabled = false;
             btn.textContent = 'Enhance with Gemini AI';
