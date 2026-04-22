@@ -239,7 +239,7 @@ function addGeminiButtons() {
         if (textarea.nextSibling && textarea.nextSibling.className === 'gemini-btn') return;
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.textContent = 'Enhance with Gemini AI';
+        btn.textContent = 'Enhance with AI';
         btn.className = 'gemini-btn';
         btn.style = 'margin-bottom:8px;background:#4c4c4c;color:#fff;border:none;border-radius:3px;padding:5px 12px;font-size:13px;cursor:pointer;';
         btn.onclick = async function() {
@@ -248,7 +248,7 @@ function addGeminiButtons() {
             const enhanced = await enhanceWithGeminiAI(textarea.value, 'auto');
             textarea.value = enhanced;
             btn.disabled = false;
-            btn.textContent = 'Enhance with Gemini AI';
+            btn.textContent = 'Enhance with AI';
         };
         textarea.parentNode.insertBefore(btn, textarea.nextSibling);
     });
