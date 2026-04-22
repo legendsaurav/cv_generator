@@ -111,7 +111,15 @@ document.getElementById('userForm').onsubmit = function(e) {
     const preview = document.getElementById('preview');
     let html = `<div class='resume'>`;
     // Header
-    html += `<header class='resume__header'><div class='brand'><img src='Screenshot 2025-12-19 103837.png' class='brand__logo' /><div><h1>${data.get('name')||''}</h1><p>${data.get('degree')||''}</p><p>${data.get('institute')||''}</p></div></div><div class='contact'><p>${data.get('phone')||''}</p><p>${data.get('email')||''}</p><p>${data.get('github')||''}</p><p>${data.get('linkedin')||''}</p></div></header>`;
+    const phone = data.get('phone')||'';
+    const email = data.get('email')||'';
+    const github = data.get('github')||'';
+    const linkedin = data.get('linkedin')||'';
+    const phoneLink = phone ? `<a href='tel:${phone}'>${phone}</a>` : '';
+    const emailLink = email ? `<a href='mailto:${email}'>${email}</a>` : '';
+    const githubLink = github ? `<a href='${github}' target='_blank'>${github}</a>` : '';
+    const linkedinLink = linkedin ? `<a href='${linkedin}' target='_blank'>${linkedin}</a>` : '';
+    html += `<header class='resume__header'><div class='brand'><img src='Screenshot 2025-12-19 103837.png' class='brand__logo' /><div><h1>${data.get('name')||''}</h1><p>${data.get('degree')||''}</p><p>${data.get('institute')||''}</p></div></div><div class='contact'><p>${phoneLink}</p><p>${emailLink}</p><p>${githubLink}</p><p>${linkedinLink}</p></div></header>`;
     // Education (static table with user input)
     html += `<section class='section'><div class='section__header'><h2>Education</h2></div>`;
     html += `<div class='table'>
